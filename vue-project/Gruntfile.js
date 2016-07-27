@@ -1,4 +1,5 @@
-var webpackConfig = require('./build/webpackConfig');
+// import webpack config
+var config = require('./build/webpack.config');
 
 module.exports = function(grunt) {
 
@@ -7,14 +8,23 @@ module.exports = function(grunt) {
     // grunt config
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        webpack: webpackConfig
+        paths: {
+            src: './src/',
+            dist: './dist/'
+        },
+        webpack: {
+            app: config
+        },
+        clean: {
+            dist: ['<%= paths.dist %>']
+        }
     });
 
-    // Load the plugins
+    // Load the grunt plugins
     require('load-grunt-tasks')(grunt);
     require('time-grunt')(grunt);
 
     //grunt tasks
-    grunt.registerTask('default', ['webpack']);
+    grunt.registerTask('default', ['clean:dist', 'webpack']);
 
 };
