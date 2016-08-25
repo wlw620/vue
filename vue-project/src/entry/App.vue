@@ -1,17 +1,17 @@
 <template>
-    <vm-header></vm-header>
-    <vm-content></vm-content>
+    <nav-vm></nav-vm>
+    <router-view></router-view>
+    <!-- <vm-header></vm-header>
+    <vm-content></vm-content> -->
 </template>
 
 <script>
 
-    const Header = require('../components/Header.vue');
-    const Content = require('../components/Content.vue');
+    const Nav = require('../components/Nav.vue');
 
     module.exports = {
         components: {
-            "vm-header": Header,
-            "vm-content": Content
+            "nav-vm": Nav
         }
     }
 </script>
